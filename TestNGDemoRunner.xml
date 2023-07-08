@@ -1,0 +1,24 @@
+
+<suite name = "MySuiteName">
+
+    <test name = "Name for my test ">
+        <paramter name = "Paramnname" value = "PramValue" />
+        <classes>
+            <class name = "org.example.SauceDemoLogin_Parameters">
+<!--                <methods>-->
+<!--                    <include name="SauceDemoLogin_Parameters"/>-->
+
+<!--                    &lt;!&ndash;                    <include name="verifyLockedUser"/>&ndash;&gt;-->
+
+<!--                </methods>-->
+            </class>
+
+
+        </classes>
+
+    </test>
+
+
+
+</suite>
+
