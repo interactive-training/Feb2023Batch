@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="D:/Training/Batch3_Feb_2023/JavaPractice/SeleniumDemoProjectFeb23">
+        <classes>
+            <class name="org.example.SauceDemoLoginTest">
+                <methods>
+                    <include name="verifyStandardUser"/>
+                    <include name="verifyLockedUser"/>
+                    <include name="verifyProblemUser"/>
+                    <include name="verifyPerformanceUser"/>
+                </methods>
+            </class>
+            <class name="org.example.SauceDemo_addToCart_multiple_Items">
+                <methods>
+                    <include name="addToCart_Multiple_Items"/>
+                </methods>
+            </class>
+            <class name="org.example.SauceDemo_addToCart_multiple_Items_And_remove_multipleItems">
+                <methods>
+                    <include name="addToCart_Multiple_Items_And_remove_All"/>
+                </methods>
+            </class>
+            <class name="org.example.SauceDemo_addToCart_one_item">
+                <methods>
+                    <include name="addToCart_one_item"/>
+                </methods>
+            </class>
+            <class name="org.example.SauceDemo_addToCart_one_item_and_remove_from_cart">
+                <methods>
+                    <include name="addToCart_one_item_and_remove_from_cart"/>
+                </methods>
+            </class>
+            <class name="org.example.TestngDemoAnnotations">
+                <methods>
+                    <include name="test1"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
