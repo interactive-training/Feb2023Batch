@@ -6,3 +6,5 @@ Feature: Sample feature name
     Given I have browser opened
     When I login with valid credentials
     Then I should be landed on home page
+    And I close the browser
+
