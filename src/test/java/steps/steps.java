@@ -6,8 +6,7 @@ import io.cucumber.java.en.When;
 
 public class steps {
 
-
-    @Given("I have browser opened")
+   @Given("I have browser opened")
     public void i_have_browser_opened() {
         // Write code here that turns the phrase above into concrete actions
 

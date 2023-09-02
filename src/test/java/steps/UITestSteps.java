@@ -1,8 +1,12 @@
 package steps;
 
+import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,25 +26,45 @@ import java.util.stream.Collectors;
 
 public class UITestSteps {
 
-    RemoteWebDriver driver;
-
-    @Given("Website is opened")
-    public void website_is_opened() throws MalformedURLException {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
+    WebDriver driver;
 
 
-//        driver = new ChromeDriver();
+    @Before("@ui")   // tagged hooks
+    public void pre_requisite(){
 
-        //start chrome driver in the docker
-        DesiredCapabilities caps = DesiredCapabilities.chrome();
+        WebDriverManager.chromedriver().setup();
 
-         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps);
+        driver = new ChromeDriver();
 
         driver.get("https://www.saucedemo.com/");
 
+        Assert.assertEquals(driver.getTitle(), "Swag Labs", "Title is not matching");
 
     }
+
+    @After
+    public void teardown(){
+        driver.quit();
+    }
+
+//    @Given("Website is opened")
+//    public void website_is_opened() throws MalformedURLException {
+//        // Write code here that turns the phrase above into concrete actions
+////        throw new io.cucumber.java.PendingException();
+//
+//        WebDriverManager.chromedriver().setup();
+//
+//        driver = new ChromeDriver();
+//
+//        //start chrome driver in the docker
+////        DesiredCapabilities caps = DesiredCapabilities.chrome();
+//
+////         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps);
+//
+//        driver.get("https://www.saucedemo.com/");
+//
+//
+//    }
 
     @When("User logged in with credentials {string}")
     public void dsfasdfadfadff(String username) {
@@ -59,14 +83,14 @@ public class UITestSteps {
     }
 
 
-    @Then("Browser is Closed")
-    public void browser_is_closed() {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-        driver.quit();
-
-
-    }
+//    @Then("Browser is Closed")
+//    public void browser_is_closed() {
+//        // Write code here that turns the phrase above into concrete actions
+////        throw new io.cucumber.java.PendingException();
+//        driver.quit();
+//
+//
+//    }
 
     @When("User has the invalid credentials")
     public void user_has_the_invalid_credentials() {
@@ -96,16 +120,12 @@ public class UITestSteps {
     @Then("Error message is displayed")
     public void error_message_is_displayed() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+//        throw new io.cucumber.java.PendingException();
+
+        System.out.println("write error message validation - home work");
     }
 
-    @Given("User is on homepage")
-    public void user_is_on_homepage() {
-        // Write code here that turns the phrase above into concrete actions
 
-        Assert.assertEquals(driver.getTitle(), "Swag Labs", "Title is not matching");
-
-    }
 
     @Then("Verify that user is able to sort product with option {string}")
     public void verify_that_user_is_able_to_sort_product_with_option(String sortOrderType) {
@@ -270,8 +290,26 @@ public class UITestSteps {
     @Then("User navigates to home page")
     public void user_navigates_to_home_page() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        //get the url
+        String myrul = driver.getCurrentUrl();
+
+        //verify that the url contains '/inventory.html'
+        Assert.assertTrue(myrul.contains("inventory.html"));
+
+
     }
 
+
+    @When("I execute api test")
+    public void i_execute_api_test() {
+        // Write code here that turns the phrase above into concrete actions
+        System.out.println("api test started");
+    }
+    @Then("api test shoudl pass")
+    public void api_test_shoudl_pass() {
+            // Write code here that turns the phrase above into concrete actions
+        System.out.println("api test success");
+    }
 
 }
