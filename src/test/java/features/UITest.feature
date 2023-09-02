@@ -1,24 +1,30 @@
 Feature: Login to Website
   we have to login to the saucelab website to check the log in process.
-
-  Scenario: login with valid credentials
-    Given Website is opened
-    When User logged in with valid credentials
-    Then User should be logged in to the website
-    And Browser is Closed
-
+#
+#  Scenario: login with valid credentials
+#    Given Website is opened
+#    When User logged in with credentials "standard_user"
+#    Then User is on homepage
+#    And Browser is Closed
+#
 #  Scenario: login with invalid credentials
 #    Given Website is opened
-#    When User has the invalid credentials
+#    When User logged in with credentials "invaliduser"
 #    Then User should not be logged in to the website
 #    And Error message is displayed
-#
-#  Scenario: Verify that user is able to sort the products
-#    Given User is on homepage
-#    When User clicks on the sort dropdown
-#    Then user should be able to choose sort order
-#    And Products should be sorted as per the choice
-#
+#    And Browser is Closed
+
+  Scenario: Verify that user is able to sort the products
+    Given Website is opened
+    When User logged in with credentials "standard_user"
+    Then User is on homepage
+    And Verify that user is able to sort product with option "Name (A to Z)"
+#    And Verify that user is able to sort product with option "Name (Z to A)"
+#    And Verify that user is able to sort product with option "Price (low to high)"
+#    And Verify that user is able to sort product with option "Price (high to low)"
+    And Browser is Closed
+
+
 #  Scenario: Verify that user is able to add the items to the cart
 #    Given User is on homepage
 #    When User selects a product to add
